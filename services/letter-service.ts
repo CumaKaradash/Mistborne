@@ -1,5 +1,3 @@
-import { supabase } from "@/lib/supabase"
-
 export interface Letter {
   id: string
   content: string
@@ -9,35 +7,38 @@ export interface Letter {
 }
 
 export async function sendLetter(content: string, mood: string): Promise<{ success: boolean; error?: string }> {
-  const deliveryAt = new Date(Date.now() + 6 * 60 * 60 * 1000).toISOString()
+  try {
+    const response = await fetch("/api/letters", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content, mood }),
+    })
 
-  const { error } = await supabase.from("letters").insert({
-    content,
-    mood,
-    delivery_at: deliveryAt,
-  })
+    const data = await response.json()
 
-  if (error) {
+    if (!response.ok) {
+      return { success: false, error: data.error || "Failed to send letter" }
+    }
+
+    return { success: true }
+  } catch (error) {
     console.error("Error sending letter:", error)
-    return { success: false, error: error.message }
+    return { success: false, error: "Failed to send letter" }
   }
-
-  return { success: true }
 }
 
 export async function getArrivedLetters(): Promise<Letter[]> {
-  const now = new Date().toISOString()
+  try {
+    const response = await fetch("/api/letters")
 
-  const { data, error } = await supabase
-    .from("letters")
-    .select("*")
-    .lte("delivery_at", now)
-    .order("delivery_at", { ascending: false })
+    if (!response.ok) {
+      console.error("Error fetching letters:", response.statusText)
+      return []
+    }
 
-  if (error) {
+    return await response.json()
+  } catch (error) {
     console.error("Error fetching letters:", error)
     return []
   }
-
-  return data || []
 }
