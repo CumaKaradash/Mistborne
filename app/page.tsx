@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Feather, Moon, Cloud, Mail, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -10,6 +10,11 @@ import { Mailbox } from "@/components/mailbox"
 export default function Home() {
   const [showWritingDesk, setShowWritingDesk] = useState(false)
   const [showMailbox, setShowMailbox] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <div className="min-h-screen relative overflow-hidden grainy-texture">
@@ -24,26 +29,27 @@ export default function Home() {
 
       {/* Floating particles */}
       <div className="fixed inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/20 rounded-full"
-            initial={{
-              x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1000),
-              y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 1000),
-            }}
-            animate={{
-              y: [null, Math.random() * -100 - 50],
-              x: [null, Math.random() * 100 - 50],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "linear",
-            }}
-          />
-        ))}
+        {mounted &&
+          [...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-primary/20 rounded-full"
+              initial={{
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+              }}
+              animate={{
+                y: [null, Math.random() * -100 - 50],
+                x: [null, Math.random() * 100 - 50],
+                opacity: [0.2, 0.5, 0.2],
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            />
+          ))}
       </div>
 
       {/* Main content */}
@@ -85,7 +91,7 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              <h1 className="font-serif text-6xl sm:text-7xl lg:text-8xl text-primary font-light tracking-tight text-balance">
+              <h1 className="font-serif text-6xl sm:text-7xl lg:text-8xl text-white font-light tracking-tight text-balance">
                 Some words need time to travel.
               </h1>
 

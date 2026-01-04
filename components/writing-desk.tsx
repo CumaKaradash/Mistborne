@@ -69,7 +69,7 @@ export function WritingDesk({ onClose }: WritingDeskProps) {
       >
         <div className="relative bg-slate-950/80 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
           {/* Subtle texture overlay */}
-          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] pointer-events-none" />
+          <div className="absolute inset-0 bg-white/[0.02] pointer-events-none" />
 
           {/* Glow effect */}
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
@@ -87,7 +87,7 @@ export function WritingDesk({ onClose }: WritingDeskProps) {
             {!sent ? (
               <>
                 <div className="mb-8">
-                  <h2 className="text-4xl font-serif text-primary mb-2">The Writing Desk</h2>
+                  <h2 className="text-4xl font-serif text-white mb-2">The Writing Desk</h2>
                   <p className="text-slate-200 text-base leading-relaxed">
                     Your words will drift through time before reaching someone...
                   </p>
@@ -102,10 +102,10 @@ export function WritingDesk({ onClose }: WritingDeskProps) {
                       <button
                         key={mood}
                         onClick={() => setSelectedMood(mood)}
-                        className={`px-4 py-2 rounded-full text-sm font-serif transition-all font-medium ${
+                        className={`px-4 py-2 rounded-full text-sm font-serif transition-all font-medium text-white border-2 ${
                           selectedMood === mood
-                            ? "bg-primary/20 text-primary border border-primary/50"
-                            : "bg-slate-800/70 text-slate-200 border border-white/10 hover:bg-slate-800/90 hover:text-slate-100"
+                            ? "border-white shadow-[0_0_15px_rgba(255,255,255,0.4)] bg-white/10"
+                            : "border-transparent bg-transparent"
                         }`}
                       >
                         {mood}

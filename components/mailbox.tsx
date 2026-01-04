@@ -78,7 +78,7 @@ export function Mailbox({ onBack }: MailboxProps) {
             Back to Home
           </Button>
 
-          <h1 className="text-5xl sm:text-6xl font-serif text-primary mb-3">Your Mailbox</h1>
+          <h1 className="text-5xl sm:text-6xl font-serif text-white mb-3">Your Mailbox</h1>
           <p className="text-slate-200 text-lg leading-relaxed font-medium">
             Letters from the void, arriving in their own time.
           </p>
@@ -183,8 +183,8 @@ export function Mailbox({ onBack }: MailboxProps) {
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-2xl bg-slate-950/90 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 sm:p-12 shadow-2xl"
             >
-              {/* Paper texture */}
-              <div className="absolute inset-0 bg-[url('/paper-texture.png')] opacity-[0.03] pointer-events-none rounded-2xl" />
+              {/* Subtle texture overlay */}
+              <div className="absolute inset-0 bg-white/[0.02] pointer-events-none rounded-2xl" />
 
               <div className="relative">
                 {/* Mood tag */}

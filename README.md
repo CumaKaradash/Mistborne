@@ -1,30 +1,27 @@
-# mysticletterslandingpage1
+# Mistborne
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A slow web social platform for anonymous letters.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/cumcum565-9230s-projects/v0-mysticletterslandingpage1-ab)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/MABvWxizkWc)
+## Tech Stack
+- **Framework:** [Next.js](https://nextjs.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Database & Auth:** [Supabase](https://supabase.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
 
-## Overview
+## Getting Started
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+First, install the dependencies:
 
-## Deployment
+```bash
+npm install
+```
 
-Your project is live at:
+Set up your environment variables by copying `.env.example` to `.env.local` and filling in your Supabase credentials.
 
-**[https://vercel.com/cumcum565-9230s-projects/v0-mysticletterslandingpage1-ab](https://vercel.com/cumcum565-9230s-projects/v0-mysticletterslandingpage1-ab)**
+Then, run the development server:
 
-## Build your app
+```bash
+npm run dev
+```
 
-Continue building your app on:
-
-**[https://v0.app/chat/MABvWxizkWc](https://v0.app/chat/MABvWxizkWc)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
